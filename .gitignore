@@ -1,0 +1,7 @@
+build/
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+*.iml
+*.swp
+static/vendor/
+node_modules/

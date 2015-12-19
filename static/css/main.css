@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: #D4AB6A;
+}
+#board {
+}
+.square {
+    text-align: center;
+    font-size: 5em;
+    border: 2px solid #805615;
+    cursor: pointer;
+}
