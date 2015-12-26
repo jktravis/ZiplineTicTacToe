@@ -13,7 +13,7 @@ exports.ticTacToe = {
     if (this.turn === '') {
       throw Error('Turn value cannot be empty.');
     }
-    if(this.isValidMove(move, this.board)) {
+    if (this.isValidMove(move, this.board)) {
       this.board[move[0]][move[1]] = this.turn;
       this.switchTurn();
       return true;
@@ -27,7 +27,7 @@ exports.ticTacToe = {
     return this.board[move[0]][move[1]] === null;
   },
 
-  switchTurn: function() {
+  switchTurn: function () {
     if (this.turn === 'X') {
       this.turn = 'O';
     }
