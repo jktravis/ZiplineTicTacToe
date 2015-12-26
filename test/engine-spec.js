@@ -18,13 +18,12 @@ describe('Engine', function () {
   describe('isValidMove', function () {
     it('should return true if the move the board[x][y] value is null', function() {
       var board = engine.createBoard();
-      var move = [0, 1];
+      var move = [0, 1, 'X'];
       expect(engine.isValidMove(move, board)).to.equal(true);
     });
     it('should return false if the move is illegal', function() {
       var board = engine.createBoard();
-      var move = [0, 1];
-
+      var move = [0, 1, 'X'];
       board[0][1] = 'X';
       expect(engine.isValidMove(move, board)).to.equal(false);
     });

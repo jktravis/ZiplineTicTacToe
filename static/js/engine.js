@@ -1,14 +1,20 @@
 exports.ticTacToe = {
+  board: [],
   createBoard: function () {
-    var board = [];
     for (var i = 0; i < 3; i++) {
-      board.push([null, null, null]);
+      this.board.push([null, null, null]);
     }
-    return board;
+    return this.board;
   },
 
   makeMove: function (move, board) {
-    console.log(move, board);
+    if(this.isValidMove(move, board)) {
+      board[move[0]][move[1]] = move[2];
+      return true;
+    }
+    else {
+      return false;
+    }
   },
 
   isValidMove: function (move, board) {
