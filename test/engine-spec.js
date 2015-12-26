@@ -35,6 +35,12 @@ describe('TicTacToe', function () {
   });
 
   describe('makeMove', function() {
+    it('should throw an exception when no turn has been set', function () {
+      expect(function(){
+       TicTacToe.makeMove([0, 1]);
+      }).to.throw('Turn value cannot be empty');
+    });
+
     it('should return true if the move was successful', function() {
       TicTacToe.turn = 'X';
       TicTacToe.board[0][1] = null;

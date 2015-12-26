@@ -10,6 +10,9 @@ exports.ticTacToe = {
   },
 
   makeMove: function (move) {
+    if (this.turn === '') {
+      throw Error('Turn value cannot be empty.');
+    }
     if(this.isValidMove(move, this.board)) {
       this.board[move[0]][move[1]] = this.turn;
       return true;
