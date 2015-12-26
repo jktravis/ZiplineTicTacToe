@@ -1,5 +1,7 @@
 exports.ticTacToe = {
   board: [],
+  turn: '',
+
   createBoard: function () {
     for (var i = 0; i < 3; i++) {
       this.board.push([null, null, null]);
@@ -7,9 +9,9 @@ exports.ticTacToe = {
     return this.board;
   },
 
-  makeMove: function (move, board) {
-    if(this.isValidMove(move, board)) {
-      board[move[0]][move[1]] = move[2];
+  makeMove: function (move) {
+    if(this.isValidMove(move, this.board)) {
+      this.board[move[0]][move[1]] = this.turn;
       return true;
     }
     else {
@@ -17,8 +19,8 @@ exports.ticTacToe = {
     }
   },
 
-  isValidMove: function (move, board) {
-    return board[move[0]][move[1]] === null;
+  isValidMove: function (move) {
+    return this.board[move[0]][move[1]] === null;
   }
 };
 
