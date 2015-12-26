@@ -15,6 +15,7 @@ exports.ticTacToe = {
     }
     if(this.isValidMove(move, this.board)) {
       this.board[move[0]][move[1]] = this.turn;
+      this.switchTurn();
       return true;
     }
     else {
@@ -24,6 +25,16 @@ exports.ticTacToe = {
 
   isValidMove: function (move) {
     return this.board[move[0]][move[1]] === null;
+  },
+
+  switchTurn: function() {
+    if (this.turn === 'X') {
+      this.turn = 'O';
+    }
+    else {
+      this.turn = 'X';
+    }
   }
+
 };
 
