@@ -1,13 +1,21 @@
 var chai = require('chai'),
   expect = chai.expect,
-  engine = require('../static/js/engine.js').ticTacToe;
+  TicTacToe = require('../static/js/engine.js').ticTacToe;
 
-describe('Engine', function () {
+describe('TicTacToe', function () {
+
+  it('should have a board property', function() {
+      expect(TicTacToe).to.have.ownProperty('board');
+    });
+
+  it('should have a turn property', function() {
+    expect(TicTacToe).to.have.ownProperty('turn');
+  });
 
   describe('createBoard', function () {
     it('should return an array of 3 arrays with 3 null values', function () {
-      var board = engine.createBoard();
-      expect(board).to.deep.equal(
+      TicTacToe.createBoard();
+      expect(TicTacToe.board).to.deep.equal(
         [[null, null, null],
          [null, null, null],
          [null, null, null]]
@@ -16,16 +24,26 @@ describe('Engine', function () {
   });
 
   describe('isValidMove', function () {
-    it('should return true if the move the board[x][y] value is null', function() {
-      var board = engine.createBoard();
-      var move = [0, 1, 'X'];
-      expect(engine.isValidMove(move, board)).to.equal(true);
+    it('should return true if the board[x][y] value is null', function() {
+      expect(TicTacToe.isValidMove([0, 1])).to.equal(true);
     });
+
     it('should return false if the move is illegal', function() {
-      var board = engine.createBoard();
-      var move = [0, 1, 'X'];
-      board[0][1] = 'X';
-      expect(engine.isValidMove(move, board)).to.equal(false);
+      TicTacToe.board[0][1] = 'X';
+      expect(TicTacToe.isValidMove([0, 1])).to.equal(false);
+    });
+  });
+
+  describe('makeMove', function() {
+    it('should return true if the move was successful', function() {
+      TicTacToe.turn = 'X';
+      TicTacToe.board[0][1] = null;
+      expect(TicTacToe.makeMove([0, 1])).to.equal(true);
+    });
+
+    it('should return false if the move was unsuccessful', function() {
+      TicTacToe.turn = 'O';
+      expect(TicTacToe.makeMove([0, 1])).to.equal(false);
     });
   })
 });
