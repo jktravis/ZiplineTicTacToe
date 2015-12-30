@@ -23,14 +23,14 @@ describe('TicTacToe', function () {
     })
   });
 
-  describe('isValidMove', function () {
+  describe('_isValidMove', function () {
     it('should return true if the board[x][y] value is null', function () {
-      expect(TicTacToe.isValidMove([0, 1])).to.equal(true);
+      expect(TicTacToe._isValidMove([0, 1])).to.equal(true);
     });
 
     it('should return false if the move is illegal', function () {
       TicTacToe.board[0][1] = 'X';
-      expect(TicTacToe.isValidMove([0, 1])).to.equal(false);
+      expect(TicTacToe._isValidMove([0, 1])).to.equal(false);
     });
   });
 
@@ -53,20 +53,20 @@ describe('TicTacToe', function () {
     });
   });
 
-  describe('switchMove', function () {
+  describe('_switchTurn', function () {
     it('should set the turn to X if not set', function () {
       TicTacToe.turn = '';
-      TicTacToe.switchTurn();
+      TicTacToe._switchTurn();
       expect(TicTacToe.turn).to.equal('X');
     });
 
     it('should set the turn to O if set to X', function () {
-      TicTacToe.switchTurn();
+      TicTacToe._switchTurn();
       expect(TicTacToe.turn).to.equal('O');
     });
 
     it('should set the turn to X if set to O', function () {
-      TicTacToe.switchTurn();
+      TicTacToe._switchTurn();
       expect(TicTacToe.turn).to.equal('X');
     });
 

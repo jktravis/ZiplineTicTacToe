@@ -13,9 +13,9 @@ exports.ticTacToe = {
     if (this.turn === '') {
       throw Error('Turn value cannot be empty.');
     }
-    if (this.isValidMove(move, this.board)) {
+    if (this._isValidMove(move, this.board)) {
       this.board[move[0]][move[1]] = this.turn;
-      this.switchTurn();
+      this._switchTurn();
       return true;
     }
     else {
@@ -23,18 +23,21 @@ exports.ticTacToe = {
     }
   },
 
-  isValidMove: function (move) {
+  _isValidMove: function (move) {
     return this.board[move[0]][move[1]] === null;
   },
 
-  switchTurn: function () {
+  _switchTurn: function () {
     if (this.turn === 'X') {
       this.turn = 'O';
     }
     else {
       this.turn = 'X';
     }
-  }
+  },
 
+  _getNextMove: function () {
+
+  }
 };
 
