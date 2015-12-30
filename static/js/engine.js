@@ -28,12 +28,7 @@ exports.ticTacToe = {
   },
 
   _switchTurn: function () {
-    if (this.turn === 'X') {
-      this.turn = 'O';
-    }
-    else {
-      this.turn = 'X';
-    }
+    this.turn = this.turn === 'X' ? 'O' : 'X';
   },
 
   _getNextMove: function () {
