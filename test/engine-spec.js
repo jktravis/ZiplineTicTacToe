@@ -69,6 +69,16 @@ describe('TicTacToe', function () {
       TicTacToe._switchTurn();
       expect(TicTacToe.turn).to.equal('X');
     });
-
   });
+
+  describe('_getNextMove', function () {
+    it('should return an array of two elements to represent the the move', function () {
+      expect(TicTacToe._getNextMove().length).to.equal(2);
+    });
+    it('should return the next valid move that prevents a win', function () {
+      TicTacToe.board[0][1] = null;
+      TicTacToe.makeMove([1, 1]);
+      console.log(TicTacToe);
+    })
+  })
 });
