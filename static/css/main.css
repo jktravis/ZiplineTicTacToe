@@ -14,3 +14,14 @@ body {
 #message, #buttons {
     text-align: center;
 }
+
+.modal-title, .modal-body {
+    color: #2c2c2c;
+    text-align: center;
+}
+
+.modal-body button {
+    color: #D4AB6A;
+    font-size: 10em;
+    width: 1.5em;
+}
