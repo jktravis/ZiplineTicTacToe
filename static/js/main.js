@@ -1,13 +1,12 @@
 $(document).ready(function() {
   var TicTacToe = exports.ticTacToe;
   var squares = $('.square');
-  var msg = "Shall we plan a game?";
   var player = {
     turn: true,
     token: 'X'
   };
 
-  updateMessage(msg);
+  updateMessage("Shall we plan a game?");
   //todo: prompt for token.
   TicTacToe.createBoard();
   TicTacToe.turn = 'X';
@@ -20,8 +19,10 @@ $(document).ready(function() {
           $this.text('X');
 
           var nextMove = TicTacToe._getNextMove();
-          TicTacToe.makeMove(nextMove);
-          $('#' + nextMove).text('O');
+          if (nextMove !== false) {
+            TicTacToe.makeMove(nextMove);
+            $('#' + nextMove).text('O');
+          }
           updateMessage(TicTacToe.result);
         }
       }
@@ -39,4 +40,9 @@ $(document).ready(function() {
   function updateMessage(m) {
     $("#message").text(m);
   }
+
+  $("#reset").on("click", function () {
+    $(".square").html('&nbsp;');
+    TicTacToe.reset();
+  })
 });

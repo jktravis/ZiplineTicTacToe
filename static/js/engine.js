@@ -36,10 +36,7 @@ exports.ticTacToe = {
   },
 
   _getNextMove: function () {
-    if (this.isGameOver() === true) {
-      return true;
-    }
-    var move = Math.floor(Math.random() * 9);
+    var move = false;
     var count = 0;
     while (!this._isValidMove(move) && count < 8) {
       move = Math.floor(Math.random() * 9);
@@ -94,6 +91,14 @@ exports.ticTacToe = {
     else {
       return false;
     }
+  },
+
+  reset: function () {
+    for (var i = 0; i < 9; i++) {
+      this.board[i] = null;
+    }
+    this.turn = 'X';
+    this.result = '';
   }
 };
 
