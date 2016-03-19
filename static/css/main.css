@@ -10,3 +10,7 @@ body {
     border: 2px solid #805615;
     cursor: pointer;
 }
+
+#message, #buttons {
+    text-align: center;
+}
