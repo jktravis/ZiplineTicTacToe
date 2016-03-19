@@ -14,6 +14,7 @@ $(document).ready(function () {
     else if (player === 'O') {
       ai = 'X';
     }
+    updateMessage("Playing as " + player);
 
     TicTacToe.createBoard();
     TicTacToe.turn = player;
@@ -28,7 +29,9 @@ $(document).ready(function () {
           }
         }
       }
-      updateMessage(TicTacToe.result);
+      if (TicTacToe.isGameOver()) {
+        updateMessage(TicTacToe.result);
+      }
     });
   });
 
@@ -41,12 +44,12 @@ $(document).ready(function () {
   }
 
   function updateMessage(m) {
-    $("#message").text(m);
+    $("#message").html(m);
   }
 
   $("#reset").on("click", function () {
     $(".square").html('&nbsp;');
     TicTacToe.reset();
-    updateMessage("");
+    updateMessage("&nbsp;");
   })
 });
