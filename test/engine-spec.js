@@ -47,7 +47,7 @@ describe('TicTacToe', function () {
 
     it('should return false if the move was unsuccessful', function () {
       TicTacToe.turn = 'O';
-      expect(TicTacToe.makeMove([0, 1])).to.equal(false);
+      expect(TicTacToe.makeMove(4)).to.equal(false);
     });
   });
 
