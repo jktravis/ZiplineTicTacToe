@@ -3,8 +3,6 @@ $(document).ready(function () {
   var squares = $('.square');
   var player, ai;
 
-  updateMessage("Shall we play a game?");
-
   $('.modal-body button').on('click', function () {
     player = this.id;
 
@@ -54,5 +52,17 @@ $(document).ready(function () {
     TicTacToe.reset();
     updateMessage("&nbsp;");
     $(this).text('Reset').removeClass('btn-success').addClass('btn-warning');
-  })
+  });
+
+  (function () {
+    $('#message').typed({
+      strings: ['Shall we play a game?'],
+      typeSpeed: 40,
+      backDelay: 30000,
+      backSpeed: 20,
+      loop: false
+    });
+  })();
 });
+
+
