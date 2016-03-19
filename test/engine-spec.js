@@ -13,38 +13,36 @@ describe('TicTacToe', function () {
   });
 
   describe('createBoard', function () {
-    it('should return an array of 3 arrays with 3 null values', function () {
+    it('should return an array of 9 null values.', function () {
       TicTacToe.createBoard();
       expect(TicTacToe.board).to.deep.equal(
-        [[null, null, null],
-          [null, null, null],
-          [null, null, null]]
+        [null, null, null, null, null, null, null, null, null]
       );
     })
   });
 
   describe('_isValidMove', function () {
-    it('should return true if the board[x][y] value is null', function () {
-      expect(TicTacToe._isValidMove([0, 1])).to.equal(true);
+    it('should return true if the board[move] value is null', function () {
+      expect(TicTacToe._isValidMove(4)).to.equal(true);
     });
 
     it('should return false if the move is illegal', function () {
-      TicTacToe.board[0][1] = 'X';
-      expect(TicTacToe._isValidMove([0, 1])).to.equal(false);
+      TicTacToe.board[4] = 'X';
+      expect(TicTacToe._isValidMove(4)).to.equal(false);
     });
   });
 
   describe('makeMove', function () {
     it('should throw an exception when no turn has been set', function () {
       expect(function () {
-        TicTacToe.makeMove([0, 1]);
+        TicTacToe.makeMove(4);
       }).to.throw('Turn value cannot be empty');
     });
 
     it('should return true if the move was successful', function () {
       TicTacToe.turn = 'X';
-      TicTacToe.board[0][1] = null;
-      expect(TicTacToe.makeMove([0, 1])).to.equal(true);
+      TicTacToe.board[4] = null;
+      expect(TicTacToe.makeMove(4)).to.equal(true);
     });
 
     it('should return false if the move was unsuccessful', function () {
@@ -72,13 +70,9 @@ describe('TicTacToe', function () {
   });
 
   describe('_getNextMove', function () {
-    it('should return an array of two elements to represent the the move', function () {
-      expect(TicTacToe._getNextMove().length).to.equal(2);
+    it('should return an integer representing the move', function () {
+      var move = TicTacToe._getNextMove();
+      expect(move).to.be.within(-1, 8);
     });
-    it('should return the next valid move that prevents a win', function () {
-      TicTacToe.board[0][1] = null;
-      TicTacToe.makeMove([1, 1]);
-      console.log(TicTacToe);
-    })
   })
 });
