@@ -35,13 +35,9 @@ exports.ticTacToe = {
   },
 
   _getNextMove: function () {
-    var move = false;
-    var count = 0;
-    while (!this._isValidMove(move) && count < 8) {
-      move = Math.floor(Math.random() * 9);
-      count++;
-    }
-    return move;
+    var empty = this.emptyCells();
+    var move = Math.floor(Math.random() * empty.length);
+    return empty[move];
   },
 
   emptyCells: function () {
