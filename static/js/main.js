@@ -13,7 +13,9 @@ $(document).ready(function () {
     }
     else if (player === 'O') {
       ai = 'X';
+      aiPlay();
     }
+
     updateMessage("Playing as " + player);
 
     TicTacToe.createBoard();
@@ -51,5 +53,6 @@ $(document).ready(function () {
     $(".square").html('&nbsp;');
     TicTacToe.reset();
     updateMessage("&nbsp;");
+    $(this).text('Reset').removeClass('btn-success').addClass('btn-warning');
   })
 });
