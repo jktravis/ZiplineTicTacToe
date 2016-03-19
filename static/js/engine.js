@@ -27,9 +27,6 @@ exports.ticTacToe = {
   },
 
   _isValidMove: function (move) {
-    if (this.isGameOver()) {
-      return false;
-    }
     return this.board[move] === null;
   },
 
