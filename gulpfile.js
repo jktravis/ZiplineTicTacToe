@@ -16,7 +16,7 @@ gulp.task('scripts', function() {
 gulp.task('default', ['scripts', 'styles'], function(){
   browserSync.init({
     server: './',
-    browser: ['firefox']
+    browser: ['firefoxdeveloperedition']
   });
   gulp.watch('static/css/**/*.css', ['styles']);
   gulp.watch('static/js/**/*.js', ['scripts']);
