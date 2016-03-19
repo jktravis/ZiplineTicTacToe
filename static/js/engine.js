@@ -32,7 +32,9 @@ exports.ticTacToe = {
   },
 
   _getNextMove: function () {
-    if (!this.isWon()) {
+    if (this.isWon()) {
+      return -1;
+    } else {
       var move = Math.floor(Math.random() * 9);
       var count = 0;
       while (!this._isValidMove(move) && count < 8) {
