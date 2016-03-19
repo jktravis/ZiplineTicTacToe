@@ -34,7 +34,7 @@ $(document).ready(function() {
   });
 
   function isTerminal() {
-    return (TicTacToe.result.match(/(draw|won)/g) || TicTacToe.emptyCells() === 0);
+    return (TicTacToe.result.match(/(draw|win)/g) || TicTacToe.emptyCells() === 0);
   }
 
   function updateMessage(m) {
