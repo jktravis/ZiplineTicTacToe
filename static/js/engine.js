@@ -16,7 +16,9 @@ exports.ticTacToe = {
     }
     if (this._isValidMove(move)) {
       this.board[move] = this.turn;
-      this._switchTurn();
+      if (!this.isGameOver()) {
+        this._switchTurn();
+      }
       return true;
     }
     else {
