@@ -2,6 +2,10 @@ body {
     background-color: black;
     color: #D4AB6A;
 }
+
+h1 {
+    text-align: center;
+}
 #board {
 }
 .square {
