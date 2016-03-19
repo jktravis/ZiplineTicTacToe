@@ -3,7 +3,7 @@ $(document).ready(function () {
   var squares = $('.square');
   var player, ai;
 
-  updateMessage("Shall we plan a game?");
+  updateMessage("Shall we play a game?");
 
   $('.modal-body button').on('click', function () {
     player = this.id;
