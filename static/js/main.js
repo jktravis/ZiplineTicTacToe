@@ -44,5 +44,6 @@ $(document).ready(function() {
   $("#reset").on("click", function () {
     $(".square").html('&nbsp;');
     TicTacToe.reset();
+    updateMessage("");
   })
 });
