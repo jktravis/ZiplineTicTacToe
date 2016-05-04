@@ -11,6 +11,7 @@ var player, ai;
 
 $('.modal-body button').on('click', function () {
   player = this.id;
+  TicTacToe.createBoard();
 
   if (player === 'X') {
     ai = 'O';
@@ -22,7 +23,6 @@ $('.modal-body button').on('click', function () {
 
   updateMessage("Playing as " + player);
 
-  TicTacToe.createBoard();
   TicTacToe.turn = player;
 
   squares.on("click", function () {
@@ -38,7 +38,6 @@ $('.modal-body button').on('click', function () {
     if (TicTacToe.isGameOver()) {
       updateMessage(TicTacToe.result);
     }
-    TicTacToe._switchTurn();
   });
 });
 
@@ -46,6 +45,7 @@ function aiPlay() {
   var nextMove = TicTacToe._getNextMove();
   TicTacToe.makeMove(nextMove);
   $('#' + nextMove).text(ai);
+  TicTacToe._switchTurn();
 }
 
 function updateMessage(m) {

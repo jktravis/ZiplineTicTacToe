@@ -57,13 +57,12 @@ exports.ticTacToe = {
   },
 
   _getNextMove: function () {
-    console.log(this.turn);
     if (!this.isGameOver()) {
-      var result = minimax(0, this.turn, this.board, false);
+      var result = minimax(0, this.turn, this.board, this.turn === 'X');
       var moveDiff = this.diffBoard(this.board, result.move);
-      prettyPrint(this.board);
+      // prettyPrint(this.board);
       this.board = result.move;
-      prettyPrint(this.board);
+      // prettyPrint(this.board);
       return moveDiff;
     }
   },
@@ -125,9 +124,7 @@ exports.ticTacToe = {
   },
 
   reset: function () {
-    for (var i = 0; i < 9; i++) {
-      this.board[i] = null;
-    }
+    this.createBoard();
     this.turn = 'X';
     this.result = '';
   }
