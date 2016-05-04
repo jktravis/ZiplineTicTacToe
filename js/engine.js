@@ -60,9 +60,7 @@ exports.ticTacToe = {
     if (!this.isGameOver()) {
       var result = minimax(0, this.turn, this.board, this.turn === 'X');
       var moveDiff = this.diffBoard(this.board, result.move);
-      // prettyPrint(this.board);
       this.board = result.move;
-      // prettyPrint(this.board);
       return moveDiff;
     }
   },
