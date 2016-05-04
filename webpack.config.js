@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  context: path.resolve('.'),
-  entry: './js/main.js',
+  context: path.resolve('./js'),
+  entry: './main.js',
   output: {
-    publicPath: '/',
-    path: path.resolve('./dist/'),
+    publicPath: '/dist/',
+    path: path.resolve('./dist'),
     filename: 'bundle.js'
   },
 
