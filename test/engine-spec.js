@@ -1,6 +1,6 @@
 var chai = require('chai'),
   expect = chai.expect,
-  TicTacToe = require('../static/js/engine.js').ticTacToe;
+  TicTacToe = require('../js/engine.js').ticTacToe;
 
 describe('TicTacToe', function () {
 

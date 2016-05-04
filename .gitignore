@@ -4,4 +4,5 @@ build/
 *.iml
 *.swp
 static/vendor/
+vendor/
 node_modules/
