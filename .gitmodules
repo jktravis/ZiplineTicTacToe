@@ -1,0 +1,3 @@
+[submodule "vendor/typed.js"]
+	path = vendor/typed.js
+	url = https://github.com/mattboldt/typed.js.git
