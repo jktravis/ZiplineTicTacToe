@@ -44,10 +44,8 @@ $('.modal-body button').on('click', function () {
 
 function aiPlay() {
   var nextMove = TicTacToe._getNextMove();
-  if (TicTacToe.isGameOver() !== true) {
-    TicTacToe.makeMove(nextMove);
-    $('#' + nextMove).text(ai);
-  }
+  TicTacToe.makeMove(nextMove);
+  $('#' + nextMove).text(ai);
 }
 
 function updateMessage(m) {
