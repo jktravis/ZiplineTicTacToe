@@ -1,5 +1,24 @@
 var minimax = require('./minimax');
 
+function prettyPrint(board) {
+
+  var pad = function (text) {
+    if (text) {
+      return '  ' + text + '  ';
+    } else {
+      return ' null';
+    }
+  };
+
+  var i = 0;
+  console.log("========Start========");
+  for (i; i < 8; i = i + 3) {
+    console.log(pad(board[i]) + ' | ' + pad(board[i + 1]) + ' | ' + pad(board[i + 2]));
+  }
+  console.log("=========End=========");
+  console.log();
+}
+
 exports.ticTacToe = {
   board: [],
   turn: '',
@@ -38,13 +57,25 @@ exports.ticTacToe = {
   },
 
   _getNextMove: function () {
-    // var empty = this.emptyCells();
-    // var move = Math.floor(Math.random() * empty.length);
-    // return empty[move];
-    var result = minimax(0, this.turn, this.board, false);
-    this.board = result.move;
+    console.log(this.turn);
+    if (!this.isGameOver()) {
+      var result = minimax(0, this.turn, this.board, false);
+      var moveDiff = this.diffBoard(this.board, result.move);
+      prettyPrint(this.board);
+      this.board = result.move;
+      prettyPrint(this.board);
+      return moveDiff;
+    }
   },
 
+  diffBoard: function (current, next) {
+    for (var i = 0; i < current.length; i++) {
+      if (current[i] !== next[i]) {
+        return i;
+      }
+    }
+  },
+  
   emptyCells: function () {
     var indxs = [];
     for (var itr = 0; itr < 9; itr++) {

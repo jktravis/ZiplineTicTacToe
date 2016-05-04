@@ -6,7 +6,6 @@ require('../vendor/typed.js/dist/typed.min');
 
 var TicTacToe = require('./engine').ticTacToe;
 
-console.log(TicTacToe);
 var squares = $('.square');
 var player, ai;
 
@@ -39,6 +38,7 @@ $('.modal-body button').on('click', function () {
     if (TicTacToe.isGameOver()) {
       updateMessage(TicTacToe.result);
     }
+    TicTacToe._switchTurn();
   });
 });
 

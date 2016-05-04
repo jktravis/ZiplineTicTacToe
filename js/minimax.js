@@ -106,22 +106,5 @@ function minimax(depth, player, board, isMax) {
   return {bestScore: bestScore, move: move};
 }
 
-function prettyPrint(board) {
-  var pad = function (text) {
-    if (text) {
-      return '  ' + text + '  ';
-    } else {
-      return ' null';
-    }
-  };
-
-  var i = 0;
-  console.log("========Start========");
-  for (i; i < 8; i = i + 3) {
-    console.log(pad(board[i]) + ' | ' + pad(board[i + 1]) + ' | ' + pad(board[i + 2]));
-  }
-  console.log("=========End=========");
-  console.log();
-}
 
 module.exports = minimax;
