@@ -18,7 +18,7 @@ $('.modal-body button').on('click', function () {
   }
   else if (player === 'O') {
     ai = 'X';
-    aiPlay();
+    aiPlay(Math.floor(Math.random() * TicTacToe.board.length));
   }
 
   updateMessage("Playing as " + player);
@@ -41,8 +41,13 @@ $('.modal-body button').on('click', function () {
   });
 });
 
-function aiPlay() {
-  var nextMove = TicTacToe._getNextMove();
+function aiPlay(move) {
+  var nextMove;
+  if (move) {
+    nextMove  = move;
+  } else {
+    nextMove = TicTacToe._getNextMove();
+  }
   TicTacToe.makeMove(nextMove);
   $('#' + nextMove).text(ai);
   TicTacToe._switchTurn();
