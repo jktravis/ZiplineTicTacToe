@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-import '../css/main.css';
 
-import '../vendor/typed.js/dist/typed.min';
+import '../css/main.css';
+import Typed from 'typed.js';
 
 const TicTacToe = require('./engine').ticTacToe;
 
@@ -64,13 +64,11 @@ $('#reset').on('click', function () {
   $(this).text('Reset').removeClass('btn-success').addClass('btn-warning');
 });
 
-(function () {
-  $('#message').typed({
-    strings: ['Shall we play a game?'],
-    typeSpeed: 40,
-    backDelay: 30000,
-    backSpeed: 20,
-    loop: false
-  });
-}());
+const typeText = new Typed('#message', {
+  strings: ['Shall we play a game?'],
+  typeSpeed: 40,
+  backDelay: 30000,
+  backSpeed: 20,
+  loop: false
+});
 
