@@ -1,6 +1,6 @@
-let chai = require('chai'),
-  expect = chai.expect,
-  TicTacToe = require('../js/engine.js').ticTacToe;
+import chai from 'chai';
+const expect = chai.expect;
+const TicTacToe = require('../js/engine.js').ticTacToe;
 
 describe('TicTacToe', () => {
   it('should have a board property', () => {
