@@ -1,4 +1,4 @@
-const minimax = require('./minimax');
+import minimax from './minimax';
 
 function prettyPrint(board) {
   const pad = function (text) {
@@ -17,7 +17,7 @@ function prettyPrint(board) {
   console.log();
 }
 
-exports.ticTacToe = {
+export const ticTacToe = {
   board: [],
   turn: '',
   result: '',

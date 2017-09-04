@@ -1,14 +1,14 @@
-require('bootstrap/dist/css/bootstrap.min.css');
-require('bootstrap');
-require('../css/main.css');
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import '../css/main.css';
 
-require('../vendor/typed.js/dist/typed.min');
+import '../vendor/typed.js/dist/typed.min';
 
 const TicTacToe = require('./engine').ticTacToe;
 
 const squares = $('.square');
-let player,
-  ai;
+let player;
+let ai;
 
 $('.modal-body button').on('click', function () {
   player = this.id;

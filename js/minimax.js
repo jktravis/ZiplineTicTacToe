@@ -106,4 +106,4 @@ function minimax(depth, player, board, isMax) {
 }
 
 
-module.exports = minimax;
+export default minimax;
