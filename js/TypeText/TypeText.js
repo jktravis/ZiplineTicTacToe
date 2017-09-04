@@ -8,9 +8,11 @@ class TypeText extends Component {
     const {strings} = this.props;
     // You can pass other options here, such as typing speed, back speed, etc.
     const options = {
-      strings: strings,
-      typeSpeed: 50,
-      backSpeed: 50
+      strings,
+      typeSpeed: 40,
+      backSpeed: 20,
+      backDelay: 30000,
+      loop: false
     };
     // this.el refers to the <span> in the render() method
     this.typed = new Typed(this.el, options);
@@ -24,17 +26,7 @@ class TypeText extends Component {
 
   render() {
     return (
-      <div className="wrap">
-        <h1>Typed.js</h1>
-        <div className="type-wrap">
-          <span
-            style={{whiteSpace: 'pre'}}
-            ref={(el) => {
-              this.el = el;
-            }}
-          />
-        </div>
-      </div>
+      <div id="message" ref={el => this.el = el}/>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import Square from './Square';
+import TypeText from './TypeText';
 
 class App extends Component {
   constructor() {
@@ -48,6 +49,20 @@ class App extends Component {
               <Square> 7 </Square>
               <Square> 8 </Square>
             </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
+               xs={10} xsOffset={1}>
+            <TypeText strings={['Shall we play a game?']}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
+               xs={10} xsOffset={1}>
+            <div id="buttons">
+              <Button bsStyle="success">Start</Button>
+            </div>
           </Col>
         </Row>
       </Grid>

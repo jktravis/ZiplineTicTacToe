@@ -1,1 +1,1 @@
-export { default } from 'TypeText';
+export { default } from './TypeText';

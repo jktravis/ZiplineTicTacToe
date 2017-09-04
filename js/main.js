@@ -7,7 +7,7 @@ import 'bootstrap';
 import '../css/main.css';
 import App from './App';
 
-const TicTacToe = require('./engine').ticTacToe;
+import { ticTacToe as TicTacToe } from './engine';
 
 const squares = $('.square');
 let player;
