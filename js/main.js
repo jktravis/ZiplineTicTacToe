@@ -1,8 +1,11 @@
+import React from 'react';
+import { render } from 'react-dom';
+import Typed from 'typed.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
 import '../css/main.css';
-import Typed from 'typed.js';
+import App from './App';
 
 const TicTacToe = require('./engine').ticTacToe;
 
@@ -72,3 +75,5 @@ const typeText = new Typed('#message', {
   loop: false
 });
 
+
+render(<App/>, document.getElementById('root'));
