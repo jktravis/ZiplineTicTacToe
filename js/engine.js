@@ -70,22 +70,20 @@ export const ticTacToe = {
   },
 
   emptyCells() {
-    const indxs = [];
+    const indexes = [];
     for (let itr = 0; itr < 9; itr++) {
       if (this.board[itr] === null) {
-        indxs.push(itr);
+        indexes.push(itr);
       }
     }
-    return indxs;
+    return indexes;
   },
 
   isGameOver() {
-    let B = this.board,
-      i,
-      j;
+    let B = this.board;
 
     // check rows
-    for (i = 0; i <= 6; i += 3) {
+    for (let i = 0; i <= 6; i += 3) {
       if (B[i] !== null && B[i] === B[i + 1] && B[i + 1] == B[i + 2]) {
         this.result = `${B[i]} wins!`; // update the state result
         return true;
@@ -93,7 +91,7 @@ export const ticTacToe = {
     }
 
     // check columns
-    for (i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 2; i++) {
       if (B[i] !== null && B[i] === B[i + 3] && B[i + 3] === B[i + 6]) {
         this.result = `${B[i]} wins!`; // update the state result
         return true;
@@ -101,7 +99,7 @@ export const ticTacToe = {
     }
 
     // check diagonals
-    for (i = 0, j = 4; i <= 2; i += 2, j -= 2) {
+    for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
       if (B[i] !== null && B[i] == B[i + j] && B[i + j] === B[i + 2 * j]) {
         this.result = `${B[i]} wins!`; // update the state result
         return true;
@@ -121,6 +119,6 @@ export const ticTacToe = {
     this.createBoard();
     this.turn = 'X';
     this.result = '';
-  },
+  }
 };
 
