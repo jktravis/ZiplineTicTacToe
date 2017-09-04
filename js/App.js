@@ -2,29 +2,33 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import Square from './Square';
 import TypeText from './TypeText';
+import cloneDeep from 'lodash/fp/cloneDeep';
+
+const defaultState = {
+  player: 'X',
+  ai: 'O',
+  isPlayerTurn: true,
+  board: [
+    {id: 0, value: null},
+    {id: 1, value: null},
+    {id: 2, value: null},
+    {id: 3, value: null},
+    {id: 4, value: null},
+    {id: 5, value: null},
+    {id: 6, value: null},
+    {id: 7, value: null},
+    {id: 8, value: null}
+  ]
+};
 
 class App extends Component {
   constructor() {
     super();
 
-    this.state = {
-      player: 'X',
-      ai: 'O',
-      isPlayerTurn: true,
-      board: [
-        {id: 0, value: null},
-        {id: 1, value: null},
-        {id: 2, value: null},
-        {id: 3, value: null},
-        {id: 4, value: null},
-        {id: 5, value: null},
-        {id: 6, value: null},
-        {id: 7, value: null},
-        {id: 8, value: null}
-      ]
-    };
+    this.state = cloneDeep(defaultState);
 
     this.handleSquareClick = this.handleSquareClick.bind(this);
+    this.handleResetClick = this.handleResetClick.bind(this);
   }
 
   handleSquareClick(event) {
@@ -37,6 +41,12 @@ class App extends Component {
         board,
         isPlayerTurn: !state.isPlayerTurn
       };
+    });
+  }
+
+  handleResetClick() {
+    this.setState(state => {
+      return cloneDeep(defaultState);
     });
   }
 
@@ -83,6 +93,7 @@ class App extends Component {
                xs={10} xsOffset={1}>
             <div id="buttons">
               <Button bsStyle="success">Start</Button>
+              <Button bsStyle="warning" onClick={this.handleResetClick}>Reset</Button>
             </div>
           </Col>
         </Row>
