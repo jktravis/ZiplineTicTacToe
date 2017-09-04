@@ -67,7 +67,7 @@ $('#reset').on('click', function () {
   $(this).text('Reset').removeClass('btn-success').addClass('btn-warning');
 });
 
-const typeText = new Typed('#message', {
+new Typed('#message', {
   strings: ['Shall we play a game?'],
   typeSpeed: 40,
   backDelay: 30000,
