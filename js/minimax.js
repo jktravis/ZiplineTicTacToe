@@ -1,3 +1,11 @@
+import clone from 'lodash/fp/clone';
+
+/**
+ * @todo There is a lot of duplicated code. DRY it up
+ * @param board
+ * @param isMax
+ * @return {{gameOver: boolean, status: string, bestScore: number, board: *}}
+ */
 function getGameStatus(board, isMax) {
   let B = board,
     i,
@@ -51,6 +59,11 @@ function getGameStatus(board, isMax) {
   return result;
 }
 
+/**
+ * @deprecated Duplicated code. DRY this up
+ * @param board
+ * @return {Array}
+ */
 function emptyCells(board) {
   const available = [];
 
@@ -63,12 +76,11 @@ function emptyCells(board) {
 }
 
 function generateBoards(board, player) {
-  const _ = require('lodash');
   const possibleBoards = [];
   const empty = emptyCells(board);
 
   for (let i = 0; i < empty.length; i++) {
-    const copy = _.clone(board);
+    const copy = clone(board);
     copy[empty[i]] = player;
     possibleBoards.push(copy);
   }

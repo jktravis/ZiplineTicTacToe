@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/fp/cloneDeep';
+import clone from 'lodash/fp/clone';
 
 /**
  * @private
@@ -102,6 +103,65 @@ export function getWinner(board) {
     }
     return curr;
   });
+}
+
+/**
+ * Uh..I guess this is to create a bunch of different boards to test against.
+ * @private
+ * @param board
+ * @param player
+ * @return {Array}
+ */
+export function generateBoards(board, player) {
+  const possibleBoards = [];
+  const empty = board.filter(b => b === null);
+
+  for (let i = 0; i < empty.length; i++) {
+    const copy = clone(board);
+    copy[empty[i]] = player;
+    possibleBoards.push(copy);
+  }
+  return possibleBoards;
+}
+
+/**
+ * The heart of the AI. Tries to recursively find the best move by way of recursion
+ * through all possible combinations to the end of the game.
+ * @private
+ * @param {number} depth
+ * @param player
+ * @param {array} board
+ * @param {boolean} isMax
+ * @return {object}
+ */
+function minimax(depth, player, board, isMax) {
+  let bestScore = isMax ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  let move;
+
+  const currentGameStatus = getGameStatus(board, isMax);
+
+  if (currentGameStatus.gameOver) {
+    // console.log(currentGameStatus);
+    return currentGameStatus;
+  }
+
+  const possibleBoards = generateBoards(board, player);
+
+  for (let i = 0; i < possibleBoards.length; i++) {
+    const newBoard = possibleBoards[i];
+    const score = minimax(depth + 1, isMax ? 'O' : 'X', newBoard, !isMax).bestScore;
+    if (isMax) {
+      if (score > bestScore) {
+        bestScore = score;
+        move = newBoard;
+      }
+    } else if (score < bestScore) {
+      bestScore = score;
+      move = newBoard;
+    }
+  }
+
+  return {bestScore, move};
 }
 
 export default {
