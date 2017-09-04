@@ -1,5 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+const defaultProps = {
+  children: '\u00A0'
+};
 
 function Square({children}) {
   return (
@@ -8,5 +11,7 @@ function Square({children}) {
     </div>
   );
 }
+
+Square.defaultProps = defaultProps;
 
 export default Square;

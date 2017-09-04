@@ -35,7 +35,7 @@ class App extends Component {
           <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                xs={10} xsOffset={1}>
             <Row>
-              <Square> 0 </Square>
+              <Square/>
               <Square> 1 </Square>
               <Square> 2 </Square>
             </Row>
