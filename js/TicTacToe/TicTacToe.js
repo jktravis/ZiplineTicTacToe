@@ -24,28 +24,28 @@ export function reset() {
 export function checkRowsForWin(board) {
   for (let i = 0; i <= 6; i += 3) {
     if (board[i].value !== null && board[i].value === board[i + 1].value && board[i + 1].value === board[i + 2].value) {
-      return {winner: board[i].value};
+      return board[i].value;
     }
   }
-  return {winner: null};
+  return null;
 }
 
 export function checkColumnsForWin(board) {
   for (let i = 0; i <= 2; i++) {
     if (board[i].value !== null && board[i].value === board[i + 3].value && board[i + 3].value === board[i + 6].value) {
-      return {winner: board[i].value};
+      return board[i].value;
     }
   }
-  return {winner: null};
+  return null;
 }
 
 export function checkDiagonalForWin(board) {
   for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
     if (board[i].value !== null && board[i].value === board[i + j].value && board[i + j].value === board[i + 2 * j].value) {
-      return {winner: board[i].value};
+      return board[i].value;
     }
   }
-  return {winner: null};
+  return null;
 }
 
 export function getEmptySquares(board) {
@@ -60,7 +60,7 @@ export function getWinner(board) {
   ];
 
   return status.reduce((prev, curr) => {
-    if (prev.winner) {
+    if (prev) {
       return prev;
     }
     return curr;

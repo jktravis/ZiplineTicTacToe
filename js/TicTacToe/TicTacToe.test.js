@@ -31,8 +31,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[1].value = 'X';
       board[2].value = 'X';
-      const result = checkRowsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkRowsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return the winner if there are three in a row across the middle", () => {
@@ -40,8 +40,8 @@ describe("TicTacToeReact", () => {
       board[3].value = 'X';
       board[4].value = 'X';
       board[5].value = 'X';
-      const result = checkRowsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkRowsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return the winner if there are three in a row across the bottom", () => {
@@ -49,8 +49,8 @@ describe("TicTacToeReact", () => {
       board[6].value = 'X';
       board[7].value = 'X';
       board[8].value = 'X';
-      const result = checkRowsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkRowsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return undefined if no matches across row", () => {
@@ -58,8 +58,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[7].value = 'X';
       board[8].value = 'X';
-      const result = checkRowsForWin(board);
-      expect(result.winner).toBe(null);
+      const winner = checkRowsForWin(board);
+      expect(winner).toBe(null);
     });
 
   });
@@ -70,8 +70,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[3].value = 'X';
       board[6].value = 'X';
-      const result = checkColumnsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkColumnsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return the winner if there are three in a row across the middle", () => {
@@ -79,8 +79,8 @@ describe("TicTacToeReact", () => {
       board[1].value = 'X';
       board[4].value = 'X';
       board[7].value = 'X';
-      const result = checkColumnsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkColumnsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return the winner if there are three in a row across the right", () => {
@@ -88,8 +88,8 @@ describe("TicTacToeReact", () => {
       board[2].value = 'X';
       board[5].value = 'X';
       board[8].value = 'X';
-      const result = checkColumnsForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkColumnsForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return undefined if no matches across column", () => {
@@ -97,8 +97,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[7].value = 'X';
       board[8].value = 'X';
-      const result = checkColumnsForWin(board);
-      expect(result.winner).toBe(null);
+      const winner = checkColumnsForWin(board);
+      expect(winner).toBe(null);
     });
 
   });
@@ -109,8 +109,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[4].value = 'X';
       board[8].value = 'X';
-      const result = checkDiagonalForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkDiagonalForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return the winner if there are three in a diagonal from top-right to bottom-left", () => {
@@ -118,8 +118,8 @@ describe("TicTacToeReact", () => {
       board[2].value = 'X';
       board[4].value = 'X';
       board[6].value = 'X';
-      const result = checkDiagonalForWin(board);
-      expect(result.winner).toEqual('X');
+      const winner = checkDiagonalForWin(board);
+      expect(winner).toEqual('X');
     });
 
     it("should return null if no matches across a diagonal", () => {
@@ -127,8 +127,8 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[7].value = 'X';
       board[8].value = 'X';
-      const result = checkDiagonalForWin(board);
-      expect(result.winner).toBe(null);
+      const winner = checkDiagonalForWin(board);
+      expect(winner).toBe(null);
     });
 
   });
@@ -152,7 +152,12 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[1].value = 'X';
       board[2].value = 'X';
-      expect(getWinner(board)).toEqual(true);
+      expect(getWinner(board)).toEqual('X');
+    });
+
+    it("should return null if the winner was yet to be determined", () => {
+      const {board} = TicTacToe.reset();
+      expect(getWinner(board)).toEqual(null);
     });
   });
 });
