@@ -23,6 +23,7 @@ export const defaultState = {
 
 /**
  * Creates a new copy of the default board state.
+ * @return {object}
  */
 export function reset() {
   return cloneDeep(defaultState);
@@ -30,6 +31,7 @@ export function reset() {
 
 /**
  * Returns the cell value of the board (or null) if the any of the rows are a win.
+ * @private
  * @param {array} board
  * @return {null|string}
  */
@@ -44,6 +46,7 @@ export function checkRowsForWin(board) {
 
 /**
  * Returns the cell value of the board (or null) if the any of the columns are a win.
+ * @private
  * @param {array} board
  * @return {null|string}
  */
@@ -58,6 +61,7 @@ export function checkColumnsForWin(board) {
 
 /**
  * Returns the cell value of the board (or null) if the any of the diagonals are a win.
+ * @private
  * @param {array} board
  * @return {null|string}
  */
@@ -72,6 +76,7 @@ export function checkDiagonalForWin(board) {
 
 /**
  * Returns all the empty squares
+ * @private
  * @param {array} board
  * @return {array}
  */
