@@ -8,22 +8,45 @@ class App extends Component {
     super();
 
     this.state = {
+      player: 'X',
+      ai: 'O',
+      isPlayerTurn: true,
       board: [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        ''
+        {id: 0, value: null},
+        {id: 1, value: null},
+        {id: 2, value: null},
+        {id: 3, value: null},
+        {id: 4, value: null},
+        {id: 5, value: null},
+        {id: 6, value: null},
+        {id: 7, value: null},
+        {id: 8, value: null}
       ]
     };
+
+    this.handleSquareClick = this.handleSquareClick.bind(this);
+  }
+
+  handleSquareClick(event) {
+    let {target: {dataset: {id}}} = event;
+    // id = parseInt(id, 10);
+    this.setState(state => {
+      const board = state.board.slice();
+      board[id].value = state.isPlayerTurn ? state.player : state.ai;
+      return {
+        board,
+        isPlayerTurn: !state.isPlayerTurn
+      };
+    });
   }
 
   render() {
     const {board} = this.state;
+    const chunkSize = 3;
+    const groups = board.map((datum, idx) => {
+      return idx % chunkSize === 0 ? board.slice(idx, idx + chunkSize) : null;
+    }).filter(datum => datum);
+
     return (
       <Grid fluid>
         <Row>
@@ -34,21 +57,19 @@ class App extends Component {
         <Row>
           <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                xs={10} xsOffset={1}>
-            <Row>
-              <Square/>
-              <Square> 1 </Square>
-              <Square> 2 </Square>
-            </Row>
-            <Row>
-              <Square> 3 </Square>
-              <Square> 4 </Square>
-              <Square> 5 </Square>
-            </Row>
-            <Row>
-              <Square> 6 </Square>
-              <Square> 7 </Square>
-              <Square> 8 </Square>
-            </Row>
+            {groups.map((group, rIdx) => {
+              return (
+                <Row key={rIdx}>
+                  {group.map((cell, cIdx) => {
+                    return (
+                      <Square key={cell.id} onClick={this.handleSquareClick} id={cell.id}>
+                        {cell.value}
+                      </Square>
+                    );
+                  })}
+                </Row>
+              );
+            })}
           </Col>
         </Row>
         <Row>
