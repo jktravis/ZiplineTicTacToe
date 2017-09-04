@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve('./js'),
@@ -26,51 +26,47 @@ module.exports = {
   ],
 
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|vendor)/,
-        loader: 'eslint'
-      }
-    ],
-    loaders: [
+    rules: [
+      // {
+      //   test: /\.js$/,
+      //   exclude: /(node_modules|vendor)/,
+      //   enforce: 'pre',
+      //   loader: 'eslint-loader'
+      // },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loaders: ['style', 'css', 'sass']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.css/,
-        loaders: ['style', 'css']
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
         exclude: /node_modules/,
-        loader: 'file'
+        use: 'file-loader'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        }
+        use: 'babel-loader'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        use: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
+        use: 'url-loader?limit=10000&mimetype=application/octet-stream'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
+        use: 'file-loader'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        use: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   }

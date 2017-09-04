@@ -21,7 +21,10 @@
     "chai": "^4.1.2",
     "css-loader": "^0.28.7",
     "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "file-loader": "^0.11.2",
     "mocha": "^3.5.0",
@@ -34,7 +37,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "lint": "eslint test/**/*.js js/**/*.js"
   },
   "author": "jktravis",
   "license": "ISC"
