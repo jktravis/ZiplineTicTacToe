@@ -72,7 +72,7 @@ class App extends Component {
                 <Row key={rIdx}>
                   {group.map((cell, cIdx) => {
                     return (
-                      <Square key={cell.id} onClick={this.handleSquareClick} id={cell.id}>
+                      <Square key={cell.id} onClick={cell.value ? null : this.handleSquareClick} id={cell.id}>
                         {cell.value}
                       </Square>
                     );
