@@ -48,24 +48,23 @@ export function checkDiagonalForWin(board) {
   return {winner: null};
 }
 
-export function isGameOver(board) {
+export function getEmptySquares(board) {
+  return board.filter(s => s.value === null);
+}
 
-  // check rows
-  if (checkColumnsForWin(board)) {
+export function getWinner(board) {
+  let status = [
+    checkRowsForWin(board),
+    checkColumnsForWin(board),
+    checkDiagonalForWin(board)
+  ];
 
-  }
-
-  // check columns
-
-  // check diagonals
-
-  const available = this.emptyCells();
-  if (available.length == 0) {
-    // the game is draw
-    this.result = "Draw. But isn't it really losing?"; // update the state result
-    return true;
-  }
-  return false;
+  return status.reduce((prev, curr) => {
+    if (prev.winner) {
+      return prev;
+    }
+    return curr;
+  });
 }
 
 export default {

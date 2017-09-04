@@ -1,6 +1,13 @@
 import expect from 'expect';
 
-import TicTacToe, { defaultState, checkDiagonalForWin, checkColumnsForWin, checkRowsForWin } from './TicTacToe';
+import TicTacToe, {
+  defaultState,
+  checkDiagonalForWin,
+  checkColumnsForWin,
+  checkRowsForWin,
+  getEmptySquares,
+  getWinner
+} from './TicTacToe';
 
 describe("TicTacToeReact", () => {
   describe("reset", () => {
@@ -124,5 +131,28 @@ describe("TicTacToeReact", () => {
       expect(result.winner).toBe(null);
     });
 
+  });
+
+  describe("getEmptySquares", () => {
+    it("should return an array of squares with values of null", () => {
+      const {board} = TicTacToe.reset();
+      expect(getEmptySquares(board).length).toEqual(9);
+      board[0].value = 'X';
+      expect(getEmptySquares(board).length).toEqual(8);
+      board[1].value = 'X';
+      board[2].value = 'X';
+      board[4].value = 'X';
+      expect(getEmptySquares(board).length).toEqual(5);
+    });
+  });
+
+  describe("getWinner", () => {
+    it("should return a boolean if the game has been won", () => {
+      const {board} = TicTacToe.reset();
+      board[0].value = 'X';
+      board[1].value = 'X';
+      board[2].value = 'X';
+      expect(getWinner(board)).toEqual(true);
+    });
   });
 });
