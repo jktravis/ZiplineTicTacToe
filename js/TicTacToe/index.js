@@ -1,8 +1,1 @@
-import reset from './resetGameState';
-
-const TicTacToe = {
-  reset
-};
-
-export default TicTacToe;
-
+export { default } from './TicTacToe';
