@@ -11,6 +11,7 @@
     "jquery": "^2.2.3",
     "lodash": "^4.11.2",
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "typed.js": "^2.0.5"
   },
