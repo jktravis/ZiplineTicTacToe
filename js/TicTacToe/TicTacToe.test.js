@@ -6,7 +6,6 @@ import TicTacToe, {
   checkColumnsForWin,
   checkRowsForWin,
   getEmptySquares,
-  getWinner
 } from './TicTacToe';
 
 describe("TicTacToeReact", () => {
@@ -152,12 +151,12 @@ describe("TicTacToeReact", () => {
       board[0].value = 'X';
       board[1].value = 'X';
       board[2].value = 'X';
-      expect(getWinner(board)).toEqual('X');
+      expect(TicTacToe.getWinner(board)).toEqual('X');
     });
 
     it("should return null if the winner was yet to be determined", () => {
       const {board} = TicTacToe.reset();
-      expect(getWinner(board)).toEqual(null);
+      expect(TicTacToe.getWinner(board)).toEqual(null);
     });
   });
 });

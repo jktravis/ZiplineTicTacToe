@@ -1,5 +1,9 @@
 import cloneDeep from 'lodash/fp/cloneDeep';
 
+/**
+ * @private
+ * @type {{player: string, ai: string, isPlayerTurn: boolean, board: [null,null,null,null,null,null,null,null,null]}}
+ */
 export const defaultState = {
   player: 'X',
   ai: 'O',
