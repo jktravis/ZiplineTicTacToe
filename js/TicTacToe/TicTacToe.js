@@ -17,10 +17,18 @@ export const defaultState = {
   ]
 };
 
+/**
+ * Creates a new copy of the default board state.
+ */
 export function reset() {
   return cloneDeep(defaultState);
 }
 
+/**
+ * Returns the cell value of the board (or null) if the any of the rows are a win.
+ * @param {array} board
+ * @return {null|string}
+ */
 export function checkRowsForWin(board) {
   for (let i = 0; i <= 6; i += 3) {
     if (board[i].value !== null && board[i].value === board[i + 1].value && board[i + 1].value === board[i + 2].value) {
@@ -30,6 +38,11 @@ export function checkRowsForWin(board) {
   return null;
 }
 
+/**
+ * Returns the cell value of the board (or null) if the any of the columns are a win.
+ * @param {array} board
+ * @return {null|string}
+ */
 export function checkColumnsForWin(board) {
   for (let i = 0; i <= 2; i++) {
     if (board[i].value !== null && board[i].value === board[i + 3].value && board[i + 3].value === board[i + 6].value) {
@@ -39,6 +52,11 @@ export function checkColumnsForWin(board) {
   return null;
 }
 
+/**
+ * Returns the cell value of the board (or null) if the any of the diagonals are a win.
+ * @param {array} board
+ * @return {null|string}
+ */
 export function checkDiagonalForWin(board) {
   for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
     if (board[i].value !== null && board[i].value === board[i + j].value && board[i + j].value === board[i + 2 * j].value) {
@@ -48,10 +66,20 @@ export function checkDiagonalForWin(board) {
   return null;
 }
 
+/**
+ * Returns all the empty squares
+ * @param {array} board
+ * @return {array}
+ */
 export function getEmptySquares(board) {
   return board.filter(s => s.value === null);
 }
 
+/**
+ * Returns the winner by checking all dimensions, or null if no winner is found
+ * @param {array} board
+ * @return {null|string}
+ */
 export function getWinner(board) {
   let status = [
     checkRowsForWin(board),
@@ -68,5 +96,6 @@ export function getWinner(board) {
 }
 
 export default {
-  reset
+  reset,
+  getWinner
 };
