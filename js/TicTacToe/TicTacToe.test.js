@@ -162,13 +162,42 @@ describe("TicTacToeReact", () => {
   });
 
   describe("generateBoards", () => {
-    it("not real sure yet", () => {
-      const board = [
-        null, null, null,
-        null, null, null,
-        null, null, null
-      ];
-      console.log(generateBoards(board, 'X'));
+    it("should return N number of boards, where N is the number of empty squares on the board", () => {
+      const {board} = TicTacToe.reset();
+      expect(generateBoards(board, 'O').length).toEqual(9);
+
+      board[0].value = 'X';
+      expect(generateBoards(board, 'O').length).toEqual(8);
+
+      board[1].value = 'X';
+      board[3].value = 'X';
+      board[8].value = 'X';
+      expect(generateBoards(board, 'O').length).toEqual(5);
+    });
+
+    it("should have one additional move for each board", () => {
+      const {board} = TicTacToe.reset();
+      let genBoards = generateBoards(board, 'O');
+      genBoards.forEach(b => {
+        expect(getEmptySquares(b).length).toEqual(8);
+      });
+
+      board[0].value = 'X';
+
+      genBoards = generateBoards(board, 'O');
+      genBoards.forEach(b => {
+        expect(getEmptySquares(b).length).toEqual(7);
+      });
+
+      board[1].value = 'X';
+      board[2].value = 'X';
+      board[3].value = 'X';
+      board[4].value = 'X';
+
+      genBoards = generateBoards(board, 'O');
+      genBoards.forEach(b => {
+        expect(getEmptySquares(b).length).toEqual(3);
+      });
     });
   });
 });

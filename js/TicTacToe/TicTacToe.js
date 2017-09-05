@@ -106,22 +106,23 @@ export function getWinner(board) {
 }
 
 /**
- * Uh..I guess this is to create a bunch of different boards to test against.
+ * Create N boards with 1 additional move taken for every empty square
+ * where N is the number of empty squares.
  * @private
  * @param board
- * @param player
+ * @param tokenValue
  * @return {Array}
  */
-export function generateBoards(board, player) {
-  const possibleBoards = [];
-  const empty = board.filter(b => b === null);
+export function generateBoards(board, tokenValue) {
+  const squares = getEmptySquares(board);
 
-  for (let i = 0; i < empty.length; i++) {
-    const copy = clone(board);
-    copy[empty[i]] = player;
-    possibleBoards.push(copy);
-  }
-  return possibleBoards;
+  // Remap the empty cells do be the whole board with
+  // all possible moves
+  return squares.map(square => {
+    const copy = cloneDeep(board);
+    copy[square.id].value = tokenValue;
+    return copy;
+  });
 }
 
 /**
