@@ -32,8 +32,8 @@ export function reset() {
 /**
  * Returns the cell value of the board (or null) if the any of the rows are a win.
  * @private
- * @param {array} board
- * @return {null|string}
+ * @param {Array} board
+ * @return {Null|String}
  */
 export function checkRowsForWin(board) {
   for (let i = 0; i <= 6; i += 3) {
@@ -47,8 +47,8 @@ export function checkRowsForWin(board) {
 /**
  * Returns the cell value of the board (or null) if the any of the columns are a win.
  * @private
- * @param {array} board
- * @return {null|string}
+ * @param {Array} board
+ * @return {Null|String}
  */
 export function checkColumnsForWin(board) {
   for (let i = 0; i <= 2; i++) {
@@ -62,8 +62,8 @@ export function checkColumnsForWin(board) {
 /**
  * Returns the cell value of the board (or null) if the any of the diagonals are a win.
  * @private
- * @param {array} board
- * @return {null|string}
+ * @param {Array} board
+ * @return {Null|String}
  */
 export function checkDiagonalForWin(board) {
   for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
@@ -78,7 +78,7 @@ export function checkDiagonalForWin(board) {
  * Returns all the empty squares
  * @private
  * @param {Array} board
- * @return {array}
+ * @return {Array}
  */
 export function getEmptySquares(board) {
   return board.filter(s => s.value === null);
@@ -157,11 +157,11 @@ function getGameStatus(board, isMax) {
  * The heart of the AI. Tries to recursively find the best move by way of recursion
  * through all possible combinations to the end of the game.
  * @private
- * @param {number} depth
+ * @param {Number} depth
  * @param player
- * @param {array} board
- * @param {boolean} isMax
- * @return {object}
+ * @param {Array} board
+ * @param {Boolean} isMax
+ * @return {Object}
  */
 function minimax(depth, player, board, isMax) {
   let bestScore = isMax ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
