@@ -1,5 +1,4 @@
 import cloneDeep from 'lodash/fp/cloneDeep';
-import clone from 'lodash/fp/clone';
 
 /**
  * @private
@@ -78,7 +77,7 @@ export function checkDiagonalForWin(board) {
 /**
  * Returns all the empty squares
  * @private
- * @param {array} board
+ * @param {Array} board
  * @return {array}
  */
 export function getEmptySquares(board) {
@@ -87,7 +86,7 @@ export function getEmptySquares(board) {
 
 /**
  * Returns the winner by checking all dimensions, or null if no winner is found
- * @param {array} board
+ * @param {Array} board
  * @return {null|string}
  */
 export function getWinner(board) {
@@ -124,6 +123,35 @@ export function generateBoards(board, tokenValue) {
     return copy;
   });
 }
+
+/**
+ * Determines the status of the game.
+ * @param {Array} board
+ * @param {Boolean} isMax
+ * @return {Object} The result {gameOver, status, bestScore, board}
+ */
+function getGameStatus(board, isMax) {
+  const result = {
+    gameOver: false,
+    status: 'None',
+    bestScore: isMax ? -2 : 2,
+    board
+  };
+  const winner = getWinner(board);
+
+  if (winner !== null) {
+    result.gameOver = true;
+    result.bestScore = isMax ? -1 : 1;
+    result.status = winner;
+  } else if (getEmptySquares(board).length === 0) {
+    result.status = 'Draw';
+    result.bestScore = 0;
+    result.gameOver = true;
+  }
+
+  return result;
+}
+
 
 /**
  * The heart of the AI. Tries to recursively find the best move by way of recursion
@@ -167,5 +195,6 @@ function minimax(depth, player, board, isMax) {
 
 export default {
   reset,
-  getWinner
+  getWinner,
+  getGameStatus
 };

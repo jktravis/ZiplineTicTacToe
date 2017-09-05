@@ -200,4 +200,15 @@ describe("TicTacToeReact", () => {
       });
     });
   });
+
+  describe("getGameStatus", () => {
+    it("should return an object with score, status, and gameOver flag", () => {
+      const {board} = TicTacToe.reset();
+      const result = TicTacToe.getGameStatus(board, true);
+      expect(result.gameOver).toEqual(false);
+      expect(result.status).toEqual('None');
+      expect(result.bestScore).toEqual(-2);
+      expect(result.board).toBe(board);
+    });
+  });
 });
