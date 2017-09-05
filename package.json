@@ -42,7 +42,7 @@
     "webpack-dev-server": "^2.7.1"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register js/**/*.test.js",
+    "test": "mocha js/**/*.test.js",
     "start": "webpack-dev-server",
     "lint": "eslint test/**/*.js js/**/*.js"
   },
