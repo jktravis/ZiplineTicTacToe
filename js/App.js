@@ -16,7 +16,6 @@ class App extends Component {
 
   handleSquareClick(event) {
     let {target: {dataset: {id}}} = event;
-    // id = parseInt(id, 10);
     this.setState(state => {
       const board = state.board.slice();
       board[id].value = state.isPlayerTurn ? state.player : state.ai;

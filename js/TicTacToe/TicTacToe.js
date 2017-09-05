@@ -152,20 +152,19 @@ function getGameStatus(board, isMax) {
   return result;
 }
 
-
 /**
  * The heart of the AI. Tries to recursively find the best move by way of recursion
  * through all possible combinations to the end of the game.
  * @private
  * @param {Number} depth
- * @param player
+ * @param {String} playerToken The token value used to represent the player.
  * @param {Array} board
- * @param {Boolean} isMax
- * @return {Object}
+ * @param {Boolean} isMax Used to determine the pass should be trying to maximize or minimize
+ * @return {Object} {bestScore, move}
  */
-function minimax(depth, player, board, isMax) {
+export function minimax(depth, playerToken, board, isMax) {
   let bestScore = isMax ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
-  let move;
+  let boardWithMove;
 
   const currentGameStatus = getGameStatus(board, isMax);
 
@@ -174,7 +173,7 @@ function minimax(depth, player, board, isMax) {
     return currentGameStatus;
   }
 
-  const possibleBoards = generateBoards(board, player);
+  const possibleBoards = generateBoards(board, playerToken);
 
   for (let i = 0; i < possibleBoards.length; i++) {
     const newBoard = possibleBoards[i];
@@ -182,15 +181,15 @@ function minimax(depth, player, board, isMax) {
     if (isMax) {
       if (score > bestScore) {
         bestScore = score;
-        move = newBoard;
+        boardWithMove = newBoard;
       }
     } else if (score < bestScore) {
       bestScore = score;
-      move = newBoard;
+      boardWithMove = newBoard;
     }
   }
 
-  return {bestScore, move};
+  return { bestScore, boardWithMove };
 }
 
 export default {

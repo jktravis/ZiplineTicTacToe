@@ -6,7 +6,7 @@ import TicTacToe, {
   checkColumnsForWin,
   checkRowsForWin,
   getEmptySquares,
-  generateBoards
+  generateBoards, minimax
 } from './TicTacToe';
 
 describe("TicTacToeReact", () => {
@@ -209,6 +209,18 @@ describe("TicTacToeReact", () => {
       expect(result.status).toEqual('None');
       expect(result.bestScore).toEqual(-2);
       expect(result.board).toBe(board);
+    });
+  });
+
+  describe("minimax", () => {
+    it("should return a bestScore and another board with the chosen move made", () => {
+      const { board } = TicTacToe.reset();
+      board[0].value = 'X';
+      const result = minimax(0, 'O', board, false);
+      console.log(result);
+      expect(result.bestScore).toNotBe(undefined);
+      expect(Array.isArray(result.boardWithMove)).toBe(true, 'board is not an array');
+      expect(getEmptySquares(result.boardWithMove).length).toEqual(getEmptySquares(board).length - 1);
     });
   });
 });
