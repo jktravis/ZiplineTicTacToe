@@ -192,8 +192,19 @@ export function minimax(depth, playerToken, board, isMax) {
   return { bestScore, boardWithMove };
 }
 
+/**
+ * Simplifies how to get the next move.
+ * @param board
+ * @param playerToken
+ * @return {{bestScore, boardWithMove}}
+ */
+export function getNextMove(board, playerToken) {
+  return minimax(0, playerToken, board, playerToken === 'X');
+}
+
 export default {
   reset,
   getWinner,
-  getGameStatus
+  getGameStatus,
+  getNextMove
 };

@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   handleSquareClick(event) {
-    let {target: {dataset: {id}}} = event;
+    let { target: { dataset: { id } } } = event;
     this.setState(state => {
       const board = state.board.slice();
       board[id].value = state.isPlayerTurn ? state.player : state.ai;
@@ -32,8 +32,27 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    const { gameOver, status: winner } = TicTacToe.getGameStatus(this.state.board, false);
+    if (gameOver) {
+      console.log('game over...', winner, 'wins');
+    } else if (!this.state.isPlayerTurn) {
+      this.getNextAIMove();
+    }
+  }
+
+  getNextAIMove() {
+    this.setState(state => {
+      const status = TicTacToe.getNextMove(state.board, state.ai);
+      return {
+        board: status.boardWithMove,
+        isPlayerTurn: !state.isPlayerTurn
+      };
+    });
+  }
+
   render() {
-    const {board} = this.state;
+    const { board } = this.state;
     const chunkSize = 3;
     const groups = board.map((datum, idx) => {
       return idx % chunkSize === 0 ? board.slice(idx, idx + chunkSize) : null;

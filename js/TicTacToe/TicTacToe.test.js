@@ -217,7 +217,6 @@ describe("TicTacToeReact", () => {
       const { board } = TicTacToe.reset();
       board[0].value = 'X';
       const result = minimax(0, 'O', board, false);
-      console.log(result);
       expect(result.bestScore).toNotBe(undefined);
       expect(Array.isArray(result.boardWithMove)).toBe(true, 'board is not an array');
       expect(getEmptySquares(result.boardWithMove).length).toEqual(getEmptySquares(board).length - 1);
