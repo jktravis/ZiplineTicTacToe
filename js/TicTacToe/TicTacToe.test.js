@@ -9,7 +9,7 @@ import TicTacToe, {
   generateBoards, minimax
 } from './TicTacToe';
 
-describe("TicTacToeReact", () => {
+describe("TicTacToe", () => {
   describe("reset", () => {
     it("should return the default board", () => {
       expect(TicTacToe.reset()).toEqual(defaultState);
