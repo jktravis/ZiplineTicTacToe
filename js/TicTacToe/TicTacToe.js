@@ -204,7 +204,6 @@ export function getNextMove(board, playerToken) {
 
 export default {
   reset,
-  getWinner,
   getGameStatus,
   getNextMove
 };
