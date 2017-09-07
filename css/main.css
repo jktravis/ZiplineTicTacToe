@@ -26,12 +26,12 @@ h1 {
     background-color: #D4AB6A;
 }
 
-#message {
+.message {
     font-family: 'Poiret One', cursive;
     font-size: 3em;
 }
 
-#message, #buttons {
+.message, #buttons {
     text-align: center;
 }
 

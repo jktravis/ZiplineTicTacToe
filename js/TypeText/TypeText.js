@@ -26,7 +26,7 @@ class TypeText extends Component {
 
   render() {
     return (
-      <div id="message" ref={el => this.el = el}/>
+      <div className="message" ref={el => this.el = el}/>
     );
   }
 }
