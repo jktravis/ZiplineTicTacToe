@@ -116,7 +116,9 @@ class App extends Component {
             <Modal.Title>Choose</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
+            <p>Play as X or as O?</p>
+            <Button>X</Button>
+            <Button>O</Button>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.closeChooser}>Close</Button>
