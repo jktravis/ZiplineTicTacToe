@@ -73,6 +73,10 @@ class App extends Component {
     });
   }
 
+  chooseToken(event) {
+    console.log(event.target.innerText);
+  }
+
   render() {
     const { board, gameStarted } = this.state;
     const chunkSize = 3;
@@ -91,9 +95,7 @@ class App extends Component {
           <Row>
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
-              {gameStarted &&
               <Board squareClickFn={this.handleSquareClick} data={data}/>
-              }
             </Col>
           </Row>
           <Row>
@@ -118,8 +120,8 @@ class App extends Component {
           </Modal.Header>
           <Modal.Body>
             <p>Play as X or as O?</p>
-            <Button>X</Button>
-            <Button>O</Button>
+            <Button onClick={this.chooseToken}>X</Button>
+            <Button onClick={this.chooseToken}>O</Button>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.closeChooser}>Close</Button>
