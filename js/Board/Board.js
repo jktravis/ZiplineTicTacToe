@@ -10,9 +10,6 @@ const propTypes = {
 
 class Board extends Component {
   render() {
-    console.group('board');
-    console.log('props', this.props);
-    console.groupEnd();
     return (
       <div className="board">
         {this.props.data.map((group, rIdx) => {
