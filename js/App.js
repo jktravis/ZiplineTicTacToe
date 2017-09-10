@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, Modal } from 'react-bootstrap';
-import Square from './Square';
+import Board from './Board';
 import TypeText from './TypeText';
 import TicTacToe from './TicTacToe';
 
@@ -8,8 +8,16 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = TicTacToe.reset();
-    this.state.showChooser = false;
+    const reset = TicTacToe.reset();
+    const { gameOver, status: winner } = TicTacToe.getGameStatus(reset.board, false);
+
+    this.state = {
+      ...reset,
+      showChooser: false,
+      gameOver,
+      winner,
+      gameStarted: false
+    };
 
     this.handleSquareClick = this.handleSquareClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
@@ -26,6 +34,9 @@ class App extends Component {
   }
 
   handleSquareClick(event) {
+    console.group("app");
+    console.log('clicky');
+    console.groupEnd();
     let { target: { dataset: { id } } } = event;
     this.setState(state => {
       const board = state.board.slice();
@@ -63,9 +74,9 @@ class App extends Component {
   }
 
   render() {
-    const { board } = this.state;
+    const { board, gameStarted } = this.state;
     const chunkSize = 3;
-    const groups = board.map((datum, idx) => {
+    const data = board.map((datum, idx) => {
       return idx % chunkSize === 0 ? board.slice(idx, idx + chunkSize) : null;
     }).filter(datum => datum);
 
@@ -80,19 +91,9 @@ class App extends Component {
           <Row>
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
-              {groups.map((group, rIdx) => {
-                return (
-                  <Row key={rIdx}>
-                    {group.map((cell) => {
-                      return (
-                        <Square key={cell.id} onClick={cell.value ? null : this.handleSquareClick} id={cell.id}>
-                          {cell.value}
-                        </Square>
-                      );
-                    })}
-                  </Row>
-                );
-              })}
+              {gameStarted &&
+              <Board squareClickFn={this.handleSquareClick} data={data}/>
+              }
             </Col>
           </Row>
           <Row>
