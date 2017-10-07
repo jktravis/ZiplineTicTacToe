@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, Modal } from 'react-bootstrap';
+
 import Board from './Board';
 import TypeText from './TypeText';
 import TicTacToe from './TicTacToe';
@@ -96,13 +97,10 @@ class App extends Component {
           <Row>
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
-              <Board squareClickFn={this.handleSquareClick} data={data}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
-                 xs={10} xsOffset={1}>
-              <TypeText strings={['Shall we play a game?']}/>
+              {gameStarted ?
+                <Board squareClickFn={this.handleSquareClick} data={data}/> :
+                <TypeText strings={['Shall we play a game?']}/>
+              }
             </Col>
           </Row>
           <Row>
