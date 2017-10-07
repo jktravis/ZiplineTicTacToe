@@ -1,0 +1,18 @@
+.square {
+  text-align: center;
+  font-size: 5em;
+  border: 2px solid #805615;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.square--clickable {
+  cursor: pointer;
+}
+
+.square--clickable:hover {
+  background-color: $text-color;
+}
+
