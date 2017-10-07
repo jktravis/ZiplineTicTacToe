@@ -3,6 +3,7 @@ import { Grid, Row, Col, Button, Modal } from 'react-bootstrap';
 import Board from './Board';
 import TypeText from './TypeText';
 import TicTacToe from './TicTacToe';
+import Chooser from './Chooser';
 
 class App extends Component {
   constructor() {
@@ -116,13 +117,9 @@ class App extends Component {
         </Grid>
         <Modal show={this.state.showChooser} onHide={this.closeChooser}>
           <Modal.Header closeButton>
-            <Modal.Title>Choose</Modal.Title>
+            <Modal.Title>Choose Tokens</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <p>Play as X or as O?</p>
-            <Button onClick={this.chooseToken}>X</Button>
-            <Button onClick={this.chooseToken}>O</Button>
-          </Modal.Body>
+          <Chooser/>
           <Modal.Footer>
             <Button onClick={this.closeChooser}>Close</Button>
           </Modal.Footer>
