@@ -51,7 +51,7 @@ export function checkRowsForWin(board) {
  * @return {Null|String}
  */
 export function checkColumnsForWin(board) {
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i <= 2; i += 1) {
     if (board[i].value !== null && board[i].value === board[i + 3].value && board[i + 3].value === board[i + 6].value) {
       return board[i].value;
     }
@@ -175,7 +175,7 @@ export function minimax(depth, playerToken, board, isMax) {
 
   const possibleBoards = generateBoards(board, playerToken);
 
-  for (let i = 0; i < possibleBoards.length; i++) {
+  for (let i = 0; i < possibleBoards.length; i += 1) {
     const newBoard = possibleBoards[i];
     const score = minimax(depth + 1, isMax ? 'O' : 'X', newBoard, !isMax).bestScore;
     if (isMax) {

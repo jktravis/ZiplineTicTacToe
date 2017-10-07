@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Typed from 'typed.js';
+
+const propTypes = {
+  strings: PropTypes.array.isRequired
+};
 
 class TypeText extends Component {
   componentDidMount() {
@@ -30,5 +35,7 @@ class TypeText extends Component {
     );
   }
 }
+
+TypeText.propTypes = propTypes;
 
 export default TypeText;

@@ -1,5 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
+
+const propTypes = {
+  children: PropTypes.any,
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
+};
 
 const defaultProps = {
   children: '\u00A0'
@@ -21,6 +28,7 @@ function Square({children, onClick, id}) {
   );
 }
 
+Square.propTypes = propTypes;
 Square.defaultProps = defaultProps;
 
 export default Square;
