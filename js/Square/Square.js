@@ -5,7 +5,10 @@ import ClassNames from 'classnames';
 const propTypes = {
   children: PropTypes.any,
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired
 };
 
 const defaultProps = {
