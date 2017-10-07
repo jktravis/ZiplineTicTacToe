@@ -25,7 +25,7 @@ export const defaultState = {
  * Creates a new copy of the default board state.
  * @return {object}
  */
-export function reset() {
+function reset() {
   return cloneDeep(defaultState);
 }
 
