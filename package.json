@@ -14,7 +14,8 @@
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.2",
     "react-icons": "^2.2.7",
-    "typed.js": "^2.0.6"
+    "typed.js": "^2.0.6",
+    "xstate": "^1.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
