@@ -10,7 +10,7 @@
     "jsx-a11y"
   ],
   "env": {
-    "mocha": true,
+    "jest": true,
     "browser": true
   },
   "parserOptions": {
