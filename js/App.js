@@ -94,7 +94,7 @@ class App extends Component {
         <Grid fluid>
           <Row>
             <Col md={4} lg={4} lgOffset={4} mdOffset={4} sm={10} smOffset={1} xs={12}>
-              <h1>Tic-Tac-Toe</h1>
+              <h1>Tic-Tac-Taco</h1>
             </Col>
           </Row>
           <Row>
