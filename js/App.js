@@ -42,7 +42,7 @@ class App extends Component {
     let { target: { dataset: { id } } } = event;
     this.setState(state => {
       const board = state.board.slice();
-      board[id].value = state.isPlayerTurn ? state.player : state.ai;
+      board[id].value = state.isPlayerTurn ? state.players.player1.token : state.players.player2.token;
       return {
         board,
         isPlayerTurn: !state.isPlayerTurn
@@ -67,7 +67,7 @@ class App extends Component {
 
   getNextAIMove() {
     this.setState(state => {
-      const status = TicTacToe.getNextMove(state.board, state.ai);
+      const status = TicTacToe.getNextMove(state.board, state.players.player2.token);
       return {
         board: status.boardWithMove,
         isPlayerTurn: !state.isPlayerTurn
@@ -75,12 +75,8 @@ class App extends Component {
     });
   }
 
-  chooseToken(event) {
-    console.log(event.target.innerText);
-  }
-
   render() {
-    const { board, gameStarted } = this.state;
+    const { board } = this.state;
     const chunkSize = 3;
     const data = board.map((datum, idx) => {
       return idx % chunkSize === 0 ? board.slice(idx, idx + chunkSize) : null;
@@ -97,10 +93,15 @@ class App extends Component {
           <Row>
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
-              {gameStarted ?
-                <Board squareClickFn={this.handleSquareClick} data={data}/> :
+              <Board squareClickFn={this.handleSquareClick}
+                     data={data}
+                     players={this.state.players}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
+                 xs={10} xsOffset={1}>
                 <TypeText strings={['Shall we play a game?']}/>
-              }
             </Col>
           </Row>
           <Row>
