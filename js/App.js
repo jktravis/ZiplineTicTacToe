@@ -53,7 +53,11 @@ class App extends Component {
   getGameState() {
     const { gameOver, status: winner } = TicTacToe.getGameStatus(this.state.board, false);
     if (gameOver) {
-      this.setState(() => ({gameOver, winner, message: `Game over... ${winner} wins`}));
+      const {player1, player2} = this.state.players;
+      const player = player1.token === winner ? player1.display :
+        player2.token === winner ? player2.display :
+          '😹';
+      this.setState(() => ({gameOver, winner, message: `Game over... ${player} wins`}));
     } else if (!this.state.isPlayerTurn) {
       this.getNextAIMove();
     }
@@ -114,7 +118,6 @@ class App extends Component {
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
               <div id="buttons">
-                <Button bsStyle="success" onClick={this.openChooser}>Start</Button>
                 <Button bsStyle="warning" onClick={this.handleResetClick}>Reset</Button>
               </div>
             </Col>
