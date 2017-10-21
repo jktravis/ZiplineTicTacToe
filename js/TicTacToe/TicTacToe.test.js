@@ -19,10 +19,10 @@ describe("TicTacToe", () => {
 
     it("should have unique references", () => {
       const state = TicTacToe.reset();
-      expect(state).toNotBe(defaultState);
+      expect(state).not.toBe(defaultState);
       state.board.forEach((cell, idx) => {
         expect(cell).toEqual(defaultState.board[idx]);
-        expect(cell).toNotBe(defaultState.board[idx]);
+        expect(cell).not.toBe(defaultState.board[idx]);
       });
     });
   });
@@ -219,7 +219,7 @@ describe("TicTacToe", () => {
       const { board } = TicTacToe.reset();
       board[0].value = 'X';
       const result = minimax(0, 'O', board, false);
-      expect(result.bestScore).toNotBe(undefined);
+      expect(result.bestScore).not.toBe(undefined);
       expect(Array.isArray(result.boardWithMove)).toBe(true, 'board is not an array');
       expect(getEmptySquares(result.boardWithMove).length).toEqual(getEmptySquares(board).length - 1);
     });
