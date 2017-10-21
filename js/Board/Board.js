@@ -21,7 +21,6 @@ class Board extends Component {
           return (
             <Row key={rIdx}>
               {group.map((cell) => {
-                console.log(cell);
                 return (
                   <Square key={cell.id} onClick={cell.value ? null : this.props.squareClickFn} id={cell.id}>
                     {

@@ -18,13 +18,15 @@ class App extends Component {
       showChooser: false,
       gameOver,
       winner,
-      gameStarted: false
+      gameStarted: false,
+      message: "Shall we play a game?"
     };
 
     this.handleSquareClick = this.handleSquareClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
     this.openChooser = this.openChooser.bind(this);
     this.closeChooser = this.closeChooser.bind(this);
+    this.getGameState = this.getGameState.bind(this);
   }
 
   openChooser() {
@@ -36,33 +38,34 @@ class App extends Component {
   }
 
   handleSquareClick(event) {
-    console.group("app");
-    console.log('clicky');
-    console.groupEnd();
     let { target: { dataset: { id } } } = event;
     this.setState(state => {
       const board = state.board.slice();
       board[id].value = state.isPlayerTurn ? state.players.player1.token : state.players.player2.token;
       return {
         board,
-        isPlayerTurn: !state.isPlayerTurn
+        isPlayerTurn: !state.isPlayerTurn,
+        gameStarted: true
       };
-    });
+    }, this.getGameState);
+  }
+
+  getGameState() {
+    const { gameOver, status: winner } = TicTacToe.getGameStatus(this.state.board, false);
+    if (gameOver) {
+      this.setState(() => ({gameOver, winner, message: `Game over... ${winner} wins`}));
+    } else if (!this.state.isPlayerTurn) {
+      this.getNextAIMove();
+    }
   }
 
   handleResetClick() {
     this.setState(() => {
-      return TicTacToe.reset();
+      return {
+        ...TicTacToe.reset(),
+        gameOver: false
+      }
     });
-  }
-
-  componentDidUpdate() {
-    const { gameOver, status: winner } = TicTacToe.getGameStatus(this.state.board, false);
-    if (gameOver) {
-      console.log('game over...', winner, 'wins');
-    } else if (!this.state.isPlayerTurn) {
-      this.getNextAIMove();
-    }
   }
 
   getNextAIMove() {
@@ -72,7 +75,7 @@ class App extends Component {
         board: status.boardWithMove,
         isPlayerTurn: !state.isPlayerTurn
       };
-    });
+    }, this.getGameState);
   }
 
   render() {
@@ -101,7 +104,10 @@ class App extends Component {
           <Row>
             <Col lg={4} lgOffset={4} md={4} mdOffset={4} sm={4} smOffset={4}
                  xs={10} xsOffset={1}>
-                <TypeText strings={['Shall we play a game?']}/>
+              {
+                (!this.state.gameStarted || (this.state.gameStarted && this.state.gameOver)) &&
+                <TypeText strings={[this.state.message]}/>
+              }
             </Col>
           </Row>
           <Row>
